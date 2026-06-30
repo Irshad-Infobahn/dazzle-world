@@ -1,0 +1,107 @@
+---
+import Layout from "../layouts/Layout.astro";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<Layout
+    title="Dazzle World General Trading LLC – We Trade You Benefit"
+    description="Authorized distributor of polymers, resins, branded innerwear garments, perfumes, and industrial solutions across GCC, Middle East & Africa."
+>
+    <!-- Page Header Start !-->
+    <div class="page-breadcrumb-area">
+        <div class="page-overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div
+                        class="te-breadcrumb-wrapper wow animate__animated animate__slideInDown animate__slow"
+                    >
+                        <div class="te-page-heading">
+                            <h3 class="te-page-title">Vision & Mission</h3>
+                        </div>
+                        <div class="te-breadcrumb-list">
+                            <ul>
+                                <li><a href={`${base}/`}>Home</a></li>
+                                <li class="active">Vision & Mission</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End !-->
+
+    <div class="mission-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="mission-box">
+                        <!-- Image -->
+                        <div
+                            class="mission-image wow animate__animated animate__fadeInRight animate__slow"
+                        >
+                            <img
+                                src={`${base}/images/mission.jpg`}
+                                alt="Mission Image"
+                            />
+                        </div>
+
+                        <h3
+                            class="wow animate__animated animate__fadeInLeft animate__fast"
+                        >
+                            Mission
+                        </h3>
+                        <p
+                            class="wow animate__animated animate__fadeInLeft animate__slow"
+                        >
+                            Our mission is to connect global manufacturers with
+                            regional markets by providing high-quality products,
+                            reliable supply chain solutions, and competitive
+                            pricing. We aim to empower businesses across Africa,
+                            GCC, South Asia, Europe, and the USA by ensuring
+                            consistency, efficiency, and professional service in
+                            trading and distribution.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="vision-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 ms-auto">
+                    <div class="vision-box">
+                        <!-- Image Left -->
+                        <div
+                            class="vision-image wow animate__animated animate__fadeInLeft animate__slow"
+                        >
+                            <img
+                                src={`${base}/images/vision.jpg`}
+                                alt="Vision Image"
+                            />
+                        </div>
+
+                        <h3
+                            class="wow animate__animated animate__fadeInRight animate__fast"
+                        >
+                            Our Vision
+                        </h3>
+                        <p
+                            class="wow animate__animated animate__fadeInRight animate__slow"
+                        >
+                            To become the most trusted international trading and
+                            distribution partner in our sectors, recognized for
+                            innovation, excellence in supply chain management,
+                            and a commitment to delivering value to our
+                            customers worldwide. We strive to expand our global
+                            presence while maintaining integrity, quality, and
+                            customer-focused service.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>

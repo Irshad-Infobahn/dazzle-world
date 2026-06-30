@@ -1,0 +1,648 @@
+---
+// Base layout: wraps every page with the <html> shell, header, and footer.
+// Props let each page customise the <title> and <meta description>.
+
+interface Props {
+    title?: string;
+    description?: string;
+}
+
+const {
+    title = "DAZZLE WORLD GENERAL TRADING LLC",
+    description = "Authorized distributor of polymers, resins, branded innerwear garments, perfumes, and industrial solutions across GCC, Middle East & Africa.",
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // strip trailing slash
+---
+
+<!doctype html>
+<html dir="ltr" lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta name="description" content={description} />
+        <meta name="author" content="Dazzle World General Trading LLC" />
+
+        <title>{title}</title>
+
+        <!-- Favicon -->
+        <link
+            rel="icon"
+            type="image/png"
+            href={`${base}/images/logo/favicon.png`}
+        />
+        <!--<link rel="apple-touch-icon" href={`${base}/images/logo/apple-touch-icon.png`} />
+        <link rel="apple-touch-icon" sizes="57x57"  href={`${base}/images/logo/apple-touch-icon-57x57.png`} />
+        <link rel="apple-touch-icon" sizes="72x72"  href={`${base}/images/logo/apple-touch-icon-72x72.png`} />
+        <link rel="apple-touch-icon" sizes="76x76"  href={`${base}/images/logo/apple-touch-icon-76x76.png`} />
+        <link rel="apple-touch-icon" sizes="114x114" href={`${base}/images/logo/apple-touch-icon-114x114.png`} />
+        <link rel="apple-touch-icon" sizes="120x120" href={`${base}/images/logo/apple-touch-icon-120x120.png`} />
+        <link rel="apple-touch-icon" sizes="144x144" href={`${base}/images/logo/apple-touch-icon-144x144.png`} />
+        <link rel="apple-touch-icon" sizes="152x152" href={`${base}/images/logo/apple-touch-icon-152x152.png`} />
+        <link rel="apple-touch-icon" sizes="180x180" href={`${base}/images/logo/apple-touch-icon-180x180.png`} />-->
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Styles (served from /public) -->
+        <link rel="stylesheet" href={`${base}/css/bootstrap.min.css`} />
+        <link rel="stylesheet" href={`${base}/css/fontawesome.min.css`} />
+        <link rel="stylesheet" href={`${base}/css/magnific-popup.css`} />
+        <link rel="stylesheet" href={`${base}/css/slick.css`} />
+        <link rel="stylesheet" href={`${base}/css/meanmenu.css`} />
+        <link rel="stylesheet" href={`${base}/css/nice-select.css`} />
+        <link rel="stylesheet" href={`${base}/css/animate.css`} />
+        <link rel="stylesheet" href={`${base}/css/style.css`} />
+
+        <!--https://themeearth.com/tf/php/netfusion/index.php-->
+
+        <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    </head>
+
+    <body>
+        <!-- Preloader -->
+        <div id="preloader">
+            <div id="preloader-status">
+                <div class="preloader-ripple">
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <!-- Preloader End !-->
+
+        <!-- WhatsApp Floating Button -->
+        <a
+            target="_blank"
+            href="https://api.whatsapp.com/send?phone=+971506933757&text=Hello, Can I get more info?. Thanks"
+            aria-label="Chat on WhatsApp"
+        >
+            <div class="whatsapplogo">
+                <img src={`${base}/images/whatsapp.png`} alt="WhatsApp" />
+            </div>
+        </a>
+
+        <!-- Header Start !-->
+        <header class="header-area style-1">
+            <div class="te-header-menu-area te-sticky-header">
+                <div class="container">
+                    <div class="row">
+                        <div
+                            class="col-12 d-flex align-items-center justify-content-between"
+                        >
+                            <!-- Left : Logo + Company Name -->
+                            <div class="te-logo d-flex align-items-center">
+                                <a href={`${base}/`} class="te-standard-logo">
+                                    <img
+                                        src={`${base}/images/logo/logo-dark.png`}
+                                        alt="Dazzle World logo"
+                                    />
+                                </a>
+
+                                <a href={`${base}/`} class="te-sticky-logo">
+                                    <img
+                                        src={`${base}/images/logo/logo-dark.png`}
+                                        alt="Dazzle World logo"
+                                    />
+                                </a>
+
+                                <a href={`${base}/`} class="te-retina-logo">
+                                    <img
+                                        src={`${base}/images/logo/logo-white.png`}
+                                        alt="Dazzle World logo"
+                                    />
+                                </a>
+
+                                <div class="company-name ms-2">
+                                    <div class="en-name">
+                                        Dazzleworld General Trading LLC
+                                    </div>
+                                    <div class="ar-name">
+                                        دازل وورلد للتجارة العامة ذ.م.م
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right : Desktop Contact / Mobile Menu -->
+                            <div class="d-flex align-items-center">
+                                <!-- Desktop -->
+                                <div
+                                    class="te-header-btn d-none d-xl-flex align-items-center"
+                                >
+                                    <a
+                                        href={`${base}/contact-us`}
+                                        class="te-cta-btn"
+                                    >
+                                        Contact Us
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </a>
+
+                                    <div class="te-search-btn">
+                                        <a
+                                            href="#"
+                                            class="te-icon te-offcanvas-toggle-btn"
+                                        >
+                                            <i class="fa-regular fa-bars-sort"
+                                            ></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Mobile -->
+                                <div class="te-mobile-menu-bar d-xl-none">
+                                    <a
+                                        href="#"
+                                        class="te-mobile-menu-toggle-btn"
+                                    >
+                                        <i class="fal fa-bars"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="col-12 d-flex justify-content-center">
+                            <div class="te-menu d-inline-block">
+                                <nav id="main-menu" class="te-main-menu">
+                                    <ul>
+                                        <li><a href={`${base}/`}>Home</a></li>
+
+                                        <li class="te-dropdown">
+                                            <a href="javascript:void(0)"
+                                                >About Us</a
+                                            >
+                                            <ul class="te-submenu">
+                                                <li>
+                                                    <a
+                                                        href={`${base}/company-profile`}
+                                                        >Company Profile</a>
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href={`${base}/vision-and-mission`}
+                                                        >Vision &amp; Mission</a>
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href={`${base}/global-presence`}
+                                                        >Global Presence</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                        <li class="te-dropdown">
+                                            <a href="javascript:void(0)"
+                                                >Divisions</a
+                                            >
+                                            <ul class="te-submenu">
+                                                <li>
+                                                    <a
+                                                        href={`${base}/polymer-and-resin-division`}
+                                                        >Polymer &amp; Resin
+                                                        Division</a>
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href={`${base}/branded-innerwear-garments-division`}
+                                                        >Branded Innerwear
+                                                        Garments Division</a>
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href={`${base}/perfumes-division`}
+                                                        >Perfumes Division</a>
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href={`${base}/standard-products-and-industrial-solutions-division`}
+                                                    >
+                                                        Standard Products &amp;
+                                                        Industrial Solutions
+                                                        Division
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                        <li>
+                                            <a
+                                                href={`${base}/partners-and-brands`}
+                                            >
+                                                Partners &amp; Brands
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header Nav Menu End -->
+        </header>
+        <!-- Header End !-->
+
+        <!-- ==================== PAGE CONTENT ==================== -->
+        <slot />
+        <!-- ==================== /PAGE CONTENT ==================== -->
+
+        <!--- Start Footer !-->
+        <footer class="footer style-1">
+            <div class="te-footer-sec">
+                <div class="container">
+                    <div class="row gy-5">
+                        <div
+                            class="col-xl-3 col-lg-6 col-md-6 te-footer-widget-wrapper"
+                        >
+                            <div class="te-footer-widget">
+                                <div class="te-footer-widget-info">
+                                    <div class="te-footer-logo">
+                                        <a href={`${base}/`}>
+                                            <img
+                                                src={`${base}/images/logo/logo-white.png`}
+                                                alt="Footer Logo"
+                                            />
+                                        </a>
+                                    </div>
+                                    <p>
+                                        M/s Dazzle World General Trading LLC is
+                                        a well-established business conglomerate
+                                        established in 2013 with its head office
+                                        in Dubai and branch offices in Ajman
+                                        (UAE) and Doha (Qatar).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="col-xl-4 col-lg-6 col-md-6 te-footer-widget-wrapper"
+                        >
+                            <div class="te-footer-widget te_widget_nav_menu">
+                                <h3 class="te-footer-widget-title">
+                                    Our Divisions
+                                </h3>
+                                <ul class="menu">
+                                    <li>
+                                        <a
+                                            href={`${base}/polymer-and-resin-division`}
+                                            >Polymer &amp; Resin Division</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a
+                                            href={`${base}/branded-innerwear-garments-division`}
+                                            >Branded Innerwear Garments Division</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href={`${base}/perfumes-division`}
+                                            >Perfumes Division</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a
+                                            href={`${base}/standard-products-and-industrial-solutions-division`}
+                                            >Standard Products &amp; Industrial
+                                            Solutions Division</a
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div
+                            class="col-xl-2 col-lg-6 col-md-6 te-footer-widget-wrapper"
+                        >
+                            <div class="te-footer-widget te_widget_nav_menu">
+                                <h3 class="te-footer-widget-title">
+                                    Quick Links
+                                </h3>
+                                <ul class="menu">
+                                    <li><a href={`${base}/`}>Home</a></li>
+                                    <li>
+                                        <a href={`${base}/company-profile`}
+                                            >About Us</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href={`${base}/partners-and-brands`}
+                                            >Partners &amp; Brands</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href={`${base}/contact-us`}
+                                            >Contact Us</a
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div
+                            class="col-xl-3 col-lg-6 col-md-6 te-footer-widget-wrapper"
+                        >
+                            <div class="te-footer-widget">
+                                <h3 class="te-footer-widget-title">
+                                    Contact Us
+                                </h3>
+                                <div class="te-footer-widget-contact">
+                                    <div class="footer-contact">
+                                        <ul class="mb-30">
+                                            <li>
+                                                <div class="contact-icon">
+                                                    <i
+                                                        class="fa-solid fa-location-dot"
+                                                    ></i>
+                                                </div>
+                                                <div class="contact-text">
+                                                    <span
+                                                        >Dubai / Ajman &ndash;
+                                                        U.A.E (Office)</span
+                                                    >
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="contact-icon">
+                                                    <i class="fa-solid fa-phone"
+                                                    ></i>
+                                                </div>
+                                                <div class="contact-text">
+                                                    <a href="tel:+97156262783"
+                                                        >+971 56 262 7834</a
+                                                    >
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="contact-icon">
+                                                    <i class="fa-solid fa-phone"
+                                                    ></i>
+                                                </div>
+                                                <div class="contact-text">
+                                                    <a href="tel:+97150693375"
+                                                        >+971 50 693 3757</a
+                                                    >
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="contact-icon">
+                                                    <i
+                                                        class="fa-solid fa-envelope"
+                                                    ></i>
+                                                </div>
+                                                <div class="contact-text">
+                                                    <a
+                                                        href="mailto:management@dazzle-world.com"
+                                                        >management@dazzle-world.com</a
+                                                    >
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <ul>
+                                            <li>
+                                                <div class="contact-icon">
+                                                    <i
+                                                        class="fa-solid fa-location-dot"
+                                                    ></i>
+                                                </div>
+                                                <div class="contact-text">
+                                                    <span
+                                                        >Doha &ndash; Qatar
+                                                        (Office)</span
+                                                    >
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="contact-icon">
+                                                    <i class="fa-solid fa-phone"
+                                                    ></i>
+                                                </div>
+                                                <div class="contact-text">
+                                                    <a href="tel:+97433344825"
+                                                        >+974 3334 4825</a
+                                                    >
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="contact-icon">
+                                                    <i
+                                                        class="fa-solid fa-envelope"
+                                                    ></i>
+                                                </div>
+                                                <div class="contact-text">
+                                                    <a
+                                                        href="mailto:sales@dazzle-world.com"
+                                                        >sales@dazzle-world.com</a
+                                                    >
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="te-social-profile">
+                                        <a href="#" aria-label="Facebook"
+                                            ><i class="fa-brands fa-facebook-f"
+                                            ></i></a
+                                        >
+                                        <a href="#" aria-label="Twitter"
+                                            ><i class="fa-brands fa-twitter"
+                                            ></i></a
+                                        >
+                                        <a href="#" aria-label="LinkedIn"
+                                            ><i class="fa-brands fa-linkedin-in"
+                                            ></i></a
+                                        >
+                                        <a href="#" aria-label="Pinterest"
+                                            ><i class="fa-brands fa-pinterest"
+                                            ></i></a
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="te-footer-bottom-wrapper">
+                                <div class="te-copyright-text">
+                                    <p>
+                                        &copy; {new Date().getFullYear()}
+                                        <a href={`${base}/`}
+                                            >Dazzle World General Trading LLC</a
+                                        > | All Rights Reserved.
+                                    </p>
+                                </div>
+                                <div class="te-footer-bottom-menu">
+                                    <ul>
+                                        <li>
+                                            <a href="#"
+                                                >Terms &amp; Conditions</a
+                                            >
+                                        </li>
+                                        <li><a href="#">Privacy Policy</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--- End Footer !-->
+
+        <!-- Menu sidebar Section Start -->
+        <div class="te-menu-sidebar-area">
+            <div class="te-menu-sidebar-wrapper">
+                <div class="te-menu-sidebar-close">
+                    <button
+                        class="te-menu-sidebar-close-btn"
+                        id="menu_sidebar_close_btn"
+                    >
+                        <i class="fal fa-times"></i>
+                    </button>
+                </div>
+                <div class="te-menu-sidebar-content">
+                    <div class="te-menu-sidebar-logo">
+                        <a href={`${base}/`}>
+                            <img
+                                src={`${base}/images/logo/logo-white.png`}
+                                alt="logo"
+                            />
+                        </a>
+                    </div>
+                    <div class="te-mobile-nav-menu"></div>
+                    <div class="te-menu-sidebar-content">
+                        <div class="te-menu-sidebar-single-widget">
+                            <div class="about-info text-white">
+                                <p class="text-justify">
+                                    M/s Dazzle World General Trading LLC is a
+                                    well-established business conglomerate
+                                    established in 2013 with its head office in
+                                    Dubai and branch offices in Ajman (UAE) and
+                                    Doha (Qatar).
+                                </p>
+                            </div>
+                        </div>
+                        <div class="te-menu-sidebar-single-widget">
+                            <h5 class="te-menu-sidebar-title">Contact Info</h5>
+                            <div class="te-header-contact-info">
+                                <span
+                                    ><i class="fa-solid fa-location-dot"></i> M/s
+                                    Dazzle World General Trading LLC</span
+                                >
+                                <span>
+                                    <a
+                                        href="mailto:management@dazzle-world.com"
+                                    >
+                                        <i class="fa-solid fa-envelope"></i> management@dazzle-world.com
+                                    </a>
+                                </span>
+                                <span>
+                                    <a href="tel:+97156266783"
+                                        ><i class="fa-solid fa-phone"></i> +971 56
+                                        266 7834</a
+                                    >
+                                </span>
+                                <span>
+                                    <a href="tel:+97150693375"
+                                        ><i class="fa-solid fa-phone"></i> +971 50
+                                        693 3757</a
+                                    >
+                                </span>
+                            </div>
+                            <div class="te-social-profile">
+                                <a href="#" aria-label="Facebook"
+                                    ><i class="fa-brands fa-facebook-f"></i></a
+                                >
+                                <a href="#" aria-label="Twitter"
+                                    ><i class="fa-brands fa-twitter"></i></a
+                                >
+                                <a href="#" aria-label="LinkedIn"
+                                    ><i class="fa-brands fa-linkedin-in"></i></a
+                                >
+                                <a href="#" aria-label="YouTube"
+                                    ><i class="fa-brands fa-youtube"></i></a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Menu sidebar Section Start -->
+
+        <div class="te-body-overlay"></div>
+
+        <!-- Search overlay -->
+        <div class="te-search-form-wrapper">
+            <div class="te-search-form-inner">
+                <div class="te-search-content-filed">
+                    <form method="get" class="te-search-form" action="#">
+                        <input type="hidden" name="post_type" value="post" />
+                        <div class="te-search-form-input">
+                            <div class="te-search-icon">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                            <input
+                                type="search"
+                                name="s"
+                                placeholder="Search"
+                            />
+                            <button
+                                class="te-theme-btn"
+                                type="submit"
+                                aria-label="Search">Search</button
+                            >
+                        </div>
+                    </form>
+                    <span class="te-search-close">
+                        <i class="fa-light fa-xmark"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Up Section Start -->
+        <div class="progress-wrap">
+            <svg
+                class="progress-circle svg-content"
+                width="100%"
+                height="100%"
+                viewBox="-1 -1 102 102"
+            >
+                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+            </svg>
+        </div>
+        <!-- Scroll Up Section End -->
+
+        <!-- Scripts (served from /public) -->
+        <script is:inline src={`${base}/js/jquery.min.js`}></script>
+        <script is:inline src={`${base}/js/bootstrap.min.js`}></script>
+        <script is:inline src={`${base}/js/jquery.nice-select.min.js`}></script>
+        <script is:inline src={`${base}/js/slick.min.js`}></script>
+        <script is:inline src={`${base}/js/jquery.counterup.min.js`}></script>
+        <script is:inline src={`${base}/js/waypoints.js`}></script>
+        <script is:inline src={`${base}/js/jquery.meanmenu.min.js`}></script>
+        <script is:inline src={`${base}/js/jquery.magnific-popup.min.js`}
+        ></script>
+        <script is:inline src={`${base}/js/inview.min.js`}></script>
+        <script is:inline src={`${base}/js/wow.js`}></script>
+        <script is:inline src={`${base}/js/tilt.jquery.js`}></script>
+        <script is:inline src={`${base}/js/isotope.min.js`}></script>
+        <script is:inline src={`${base}/js/scrolltotop.min.js`}></script>
+        <script is:inline src={`${base}/js/plugins.js`}></script>
+        <script is:inline src={`${base}/js/custom.js`}></script>
+    </body>
+</html>

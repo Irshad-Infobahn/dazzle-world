@@ -1,0 +1,120 @@
+---
+import Layout from "../layouts/Layout.astro";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<Layout
+    title="Dazzle World General Trading LLC – We Trade You Benefit"
+    description="Authorized distributor of polymers, resins, branded innerwear garments, perfumes, and industrial solutions across GCC, Middle East & Africa."
+>
+    <!-- Page Header Start !-->
+    <div class="page-breadcrumb-area">
+        <div class="page-overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div
+                        class="te-breadcrumb-wrapper wow animate__animated animate__slideInDown animate__slow"
+                    >
+                        <div class="te-page-heading">
+                            <h3 class="te-page-title">Partners & Brands</h3>
+                        </div>
+                        <div class="te-breadcrumb-list">
+                            <ul>
+                                <li><a href={`${base}/`}>Home</a></li>
+                                <li class="active">Partners & Brands</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End !-->
+    <!-- Project Page Start -->
+    <div class="project-page-wrapper">
+        <div class="container">
+            <div class="row gy-5">
+                <div class="col-12 col-md-3">
+                    <div
+                        class="partner-item wow animate__animated animate__fadeInUp animate__faster"
+                    >
+                        <div class="partner-image">
+                            <img
+                                src={`${base}/images/partner/match-it-by-softline.png`}
+                                alt="image"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-3">
+                    <div
+                        class="partner-item wow animate__animated animate__fadeInUp animate__fast"
+                    >
+                        <div class="partner-image">
+                            <img
+                                src={`${base}/images/partner/rupa.png`}
+                                alt="image"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-3">
+                    <div
+                        class="partner-item wow animate__animated animate__fadeInUp animate__slow"
+                    >
+                        <div class="partner-image">
+                            <img
+                                src={`${base}/images/partner/macro-world.png`}
+                                alt="image"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-3">
+                    <div
+                        class="partner-item wow animate__animated animate__fadeInUp animate__slower"
+                    >
+                        <div class="partner-image">
+                            <img
+                                src={`${base}/images/partner/macro-men.png`}
+                                alt="image"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-3 offset-lg-3">
+                    <div
+                        class="partner-item wow animate__animated animate__fadeInUp animate__slow"
+                    >
+                        <div class="partner-image">
+                            <img
+                                src={`${base}/images/partner/macro-women.png`}
+                                alt="image"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-3">
+                    <div
+                        class="partner-item wow animate__animated animate__fadeInUp animate__slow"
+                    >
+                        <div class="partner-image">
+                            <img
+                                src={`${base}/images/partner/softline.png`}
+                                alt="image"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Page End -->
+</Layout>
