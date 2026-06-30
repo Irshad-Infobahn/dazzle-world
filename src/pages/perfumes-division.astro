@@ -232,94 +232,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     </div>
     <!-- Project Page End -->
 
-    <div class="modal fade" id="enquiryModal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content eq-modal-content">
-                <div class="eq-modal-header">
-                    <div class="eq-modal-header-text">
-                        <p>Product Enquiry</p>
-                        <h5 id="modalProductTitle">Product Name</h5>
-                    </div>
-                    <button
-                        type="button"
-                        class="eq-modal-close"
-                        data-bs-dismiss="modal">✕</button
-                    >
-                </div>
-
-                <div class="modal-body eq-modal-body">
-                    <div class="eq-modal-grid">
-                        <div class="eq-modal-image-panel">
-                            <div class="eq-product-image-wrapper">
-                                <img id="productImage" src="" alt="Product" />
-                            </div>
-                            <span id="productCategory" class="eq-product-badge"
-                                >Category</span
-                            >
-                        </div>
-
-                        <div class="eq-modal-form-panel">
-                            <form id="enquiryForm" class="eq-form">
-                                <input
-                                    type="hidden"
-                                    name="product"
-                                    id="productDropdown"
-                                />
-
-                                <div class="eq-form-row">
-                                    <div class="eq-field">
-                                        <label class="eq-label">Your Name</label
-                                        >
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            placeholder="John Smith"
-                                            required
-                                            class="eq-input"
-                                        />
-                                    </div>
-                                    <div class="eq-field">
-                                        <label class="eq-label">Phone</label>
-                                        <input
-                                            type="text"
-                                            name="phone"
-                                            placeholder="+971 50 000 0000"
-                                            class="eq-input"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div class="eq-field">
-                                    <label class="eq-label">Email</label>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        placeholder="john@company.com"
-                                        required
-                                        class="eq-input"
-                                    />
-                                </div>
-
-                                <div class="eq-field">
-                                    <label class="eq-label">Message</label>
-                                    <textarea
-                                        name="message"
-                                        placeholder="Quantity required, delivery location, etc."
-                                        rows="3"
-                                        class="eq-textarea"></textarea>
-                                </div>
-
-                                <button type="submit" class="eq-submit-btn">
-                                    Send Enquiry →
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script>
         const filterBtns = document.querySelectorAll(".portfolio-btn");
         const items = document.querySelectorAll(".portfolio-item");
@@ -346,32 +258,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
                         el.style.display = "none";
                     }
                 });
-            });
-        });
-
-        document.querySelectorAll(".enquiry-btn").forEach((btn) => {
-            btn.addEventListener("click", (e) => {
-                const target = e.currentTarget as HTMLElement;
-                const product = target.dataset.product;
-                const image = target.dataset.image;
-                const category =
-                    target.closest(".content")?.querySelector(".sub-title")
-                        ?.textContent ?? "";
-
-                const modalTitle = document.getElementById("modalProductTitle");
-                const dropdown = document.getElementById(
-                    "productDropdown",
-                ) as HTMLInputElement | null;
-                const productImage = document.getElementById(
-                    "productImage",
-                ) as HTMLImageElement | null;
-                const productCategory =
-                    document.getElementById("productCategory");
-
-                if (modalTitle) modalTitle.textContent = product ?? "";
-                if (dropdown) dropdown.value = product ?? "";
-                if (productImage) productImage.src = image ?? "";
-                if (productCategory) productCategory.textContent = category;
             });
         });
     </script>

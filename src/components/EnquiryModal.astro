@@ -1,0 +1,130 @@
+<div class="modal fade" id="enquiryModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content eq-modal-content">
+            <div class="eq-modal-header">
+                <div class="eq-modal-header-text">
+                    <p>Product Enquiry</p>
+                    <h5 id="modalProductTitle">Product Name</h5>
+                </div>
+                <button type="button" class="eq-modal-close" data-bs-dismiss="modal">✕</button>
+            </div>
+
+            <div class="modal-body eq-modal-body">
+                <div class="eq-modal-grid">
+                    <div class="eq-modal-image-panel">
+                        <div class="eq-product-image-wrapper">
+                            <img id="productImage" src="" alt="Product" />
+                        </div>
+                        <span id="productCategory" class="eq-product-badge">Category</span>
+                    </div>
+
+                    <div class="eq-modal-form-panel">
+                        <form id="enquiryForm" class="eq-form">
+                            <input type="hidden" name="access_key" value="74cefc12-5045-4a1b-80c3-a4bda4f2a8b2" />
+                            <input type="hidden" name="subject" id="enquirySubject" value="" />
+                            <input type="hidden" name="product" id="productDropdown" />
+
+                            <div class="eq-form-row">
+                                <div class="eq-field">
+                                    <label class="eq-label">Your Name</label>
+                                    <input type="text" name="name" placeholder="John Smith" required class="eq-input" />
+                                </div>
+                                <div class="eq-field">
+                                    <label class="eq-label">Phone</label>
+                                    <input type="text" name="phone" placeholder="+971 50 000 0000" class="eq-input" />
+                                </div>
+                            </div>
+
+                            <div class="eq-field">
+                                <label class="eq-label">Email</label>
+                                <input type="email" name="email" placeholder="john@company.com" required class="eq-input" />
+                            </div>
+
+                            <div class="eq-field">
+                                <label class="eq-label">Message</label>
+                                <textarea name="message" placeholder="Quantity required, delivery location, etc." rows="3" class="eq-textarea"></textarea>
+                            </div>
+
+                            <p id="enquiryStatus" style="margin:8px 0 0;font-size:13px;"></p>
+
+                            <button type="submit" class="eq-submit-btn" id="enquirySubmitBtn">
+                                Send Enquiry →
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll(".enquiry-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            const target = e.currentTarget as HTMLElement;
+            const product = target.dataset.product;
+            const image = target.dataset.image;
+            const category =
+                target.closest(".content")?.querySelector(".sub-title")?.textContent ?? "";
+
+            const modalTitle = document.getElementById("modalProductTitle");
+            const dropdown = document.getElementById("productDropdown") as HTMLInputElement | null;
+            const subjectField = document.getElementById("enquirySubject") as HTMLInputElement | null;
+            const productImage = document.getElementById("productImage") as HTMLImageElement | null;
+            const productCategory = document.getElementById("productCategory");
+
+            if (modalTitle) modalTitle.textContent = product ?? "";
+            if (dropdown) dropdown.value = product ?? "";
+            if (subjectField) subjectField.value = `Product Enquiry: ${product ?? ""}`;
+            if (productImage) productImage.src = image ?? "";
+            if (productCategory) productCategory.textContent = category;
+        });
+    });
+
+    const enquiryForm = document.getElementById("enquiryForm") as HTMLFormElement | null;
+    const enquiryStatus = document.getElementById("enquiryStatus") as HTMLParagraphElement | null;
+    const enquirySubmitBtn = document.getElementById("enquirySubmitBtn") as HTMLButtonElement | null;
+
+    enquiryForm?.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (!enquirySubmitBtn || !enquiryStatus) return;
+
+        enquirySubmitBtn.disabled = true;
+        enquirySubmitBtn.textContent = "Sending...";
+        enquiryStatus.textContent = "";
+
+        try {
+            const formData = new FormData(enquiryForm);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            const res = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", Accept: "application/json" },
+                body: json,
+            });
+
+            const result = await res.json();
+
+            if (result.success) {
+                enquiryStatus.style.color = "green";
+                enquiryStatus.textContent = "Enquiry sent! We'll contact you shortly.";
+                enquiryForm.reset();
+                setTimeout(() => {
+                    const modalEl = document.getElementById("enquiryModal");
+                    const modal = (window as any).bootstrap?.Modal.getInstance(modalEl);
+                    modal?.hide();
+                }, 1200);
+            } else {
+                enquiryStatus.style.color = "red";
+                enquiryStatus.textContent = result.message || "Something went wrong.";
+            }
+        } catch {
+            enquiryStatus.style.color = "red";
+            enquiryStatus.textContent = "Network error. Please try again.";
+        } finally {
+            enquirySubmitBtn.disabled = false;
+            enquirySubmitBtn.textContent = "Send Enquiry →";
+        }
+    });
+</script>

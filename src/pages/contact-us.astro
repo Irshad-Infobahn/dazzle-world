@@ -118,7 +118,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
                             For inquiries, partnerships, or distributorship
                             opportunities, please contact us.
                         </p>
-                        <form class="te-comment-form">
+                        <form id="contactForm" class="te-comment-form">
+                            <input type="hidden" name="access_key" value="74cefc12-5045-4a1b-80c3-a4bda4f2a8b2" />
+                            <input type="hidden" name="subject" value="New Contact Inquiry — Dazzle World Website" />
+
                             <div class="row gx-4">
                                 <div class="col-xl-12">
                                     <div class="te-contacts-name">
@@ -126,6 +129,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
                                             name="name"
                                             type="text"
                                             placeholder="Your Name"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -135,6 +139,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
                                             name="email"
                                             type="email"
                                             placeholder="Your Email*"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -160,8 +165,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
                                 <div class="col-12 text-center">
                                     <button
                                         class="te-theme-btn blue-btn rounded-1"
-                                        type="submit">Send a messege</button
+                                        type="submit"
+                                        id="contactSubmitBtn">Send a messege</button
                                     >
+                                    <p id="contactStatus" style="margin-top:12px;font-size:14px;"></p>
                                 </div>
                             </div>
                         </form>
@@ -185,5 +192,48 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         </div>
     </div>
     <!-- Map end -->
-    <!--- Start Footer !-->
+
+    <script>
+        const contactForm = document.getElementById("contactForm") as HTMLFormElement | null;
+        const contactStatus = document.getElementById("contactStatus") as HTMLParagraphElement | null;
+        const contactSubmitBtn = document.getElementById("contactSubmitBtn") as HTMLButtonElement | null;
+
+        contactForm?.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            if (!contactSubmitBtn || !contactStatus) return;
+
+            contactSubmitBtn.disabled = true;
+            contactSubmitBtn.textContent = "Sending...";
+            contactStatus.textContent = "";
+
+            try {
+                const formData = new FormData(contactForm);
+                const object = Object.fromEntries(formData);
+                const json = JSON.stringify(object);
+
+                const res = await fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json", Accept: "application/json" },
+                    body: json,
+                });
+
+                const result = await res.json();
+
+                if (result.success) {
+                    contactStatus.style.color = "green";
+                    contactStatus.textContent = "Message sent successfully! We'll get back to you soon.";
+                    contactForm.reset();
+                } else {
+                    contactStatus.style.color = "red";
+                    contactStatus.textContent = result.message || "Something went wrong. Please try again.";
+                }
+            } catch {
+                contactStatus.style.color = "red";
+                contactStatus.textContent = "Network error. Please try again.";
+            } finally {
+                contactSubmitBtn.disabled = false;
+                contactSubmitBtn.textContent = "Send a messege";
+            }
+        });
+    </script>
 </Layout>
