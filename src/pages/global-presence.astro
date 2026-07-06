@@ -1,0 +1,163 @@
+---
+import Layout from "../layouts/Layout.astro";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<Layout
+    title="Dazzle World General Trading LLC – We Trade You Benefit"
+    description="Authorized distributor of polymers, resins, branded innerwear garments, perfumes, and industrial solutions across GCC, Middle East & Africa."
+>
+    <!-- Resources -->
+    <!--<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <script>
+    am5.ready(function() {
+
+      var root = am5.Root.new("chartdiv");
+      root.setThemes([ am5themes_Animated.new(root) ]);
+
+      var chart = root.container.children.push(
+        am5map.MapChart.new(root, {
+          panX: "rotateX",
+          panY: "translateY",
+          projection: am5map.geoMercator(),
+        })
+      );
+
+      var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+      zoomControl.homeButton.set("visible", true);
+
+      // Define your regions with ISO codes and colors
+      var regions = {
+        middleEastGCC: { countries: ["AE","SA","KW","OM","QA","BH","JO","IQ","LB","SY","YE"], color: 0xFF8C00 },
+        africa: { countries: ["DZ","EG","MA","NG","ZA","KE","GH","TN","UG","TZ","ET","CI","SN","CM"], color: 0x28A745 },
+        southAsia: { countries: ["IN","PK","BD","NP","LK","BT","MV","AF"], color: 0xDC3545 },
+        europe: { countries: ["FR","DE","IT","ES","GB","NL","BE","SE","NO","DK","FI","CH","AT","PL","PT","GR","IE","CZ","HU","RO","BG","HR","SI","SK","EE","LV","LT","LU","IS","MT","CY"], color: 0x007BFF },
+        usa: { countries: ["US"], color: 0x1A237E }
+      };
+
+      // Polygon series for countries
+      var polygonSeries = chart.series.push(
+        am5map.MapPolygonSeries.new(root, {
+          geoJSON: am5geodata_worldLow,
+          exclude: ["AQ"] // exclude Antarctica
+        })
+      );
+
+      // Base fill for neutral countries
+      polygonSeries.mapPolygons.template.setAll({
+        fill: am5.color(0xdadada),
+        stroke: am5.color(0xffffff),
+        strokeWidth: 1
+      });
+
+      // Adapter: color countries based on region
+      polygonSeries.mapPolygons.template.adapters.add("fill", function(fill, target) {
+        var countryId = target.dataItem.dataContext.id;
+        for (var key in regions) {
+          if (regions[key].countries.includes(countryId)) {
+            return am5.color(regions[key].color);
+          }
+        }
+        return fill; // neutral gray for other countries
+      });
+
+      // Clustered point series
+      var pointSeries = chart.series.push(am5map.ClusteredPointSeries.new(root, {}));
+
+      pointSeries.set("clusteredBullet", function(root) {
+        var container = am5.Container.new(root, { cursorOverStyle:"pointer" });
+        container.children.push(am5.Circle.new(root, { radius: 8, tooltipY: 0, fill: am5.color(0xff8c00) }));
+        container.children.push(am5.Circle.new(root, { radius: 12, fillOpacity: 0.3, tooltipY: 0, fill: am5.color(0xff8c00) }));
+        container.children.push(am5.Circle.new(root, { radius: 16, fillOpacity: 0.3, tooltipY: 0, fill: am5.color(0xff8c00) }));
+        container.children.push(am5.Label.new(root, { centerX: am5.p50, centerY: am5.p50, fill: am5.color(0xffffff), populateText: true, fontSize: "8", text: "{value}" }));
+        container.events.on("click", function(e) { pointSeries.zoomToCluster(e.target.dataItem); });
+        return am5.Bullet.new(root, { sprite: container });
+      });
+
+      pointSeries.bullets.push(function() {
+        var circle = am5.Circle.new(root, { radius: 6, tooltipY: 0, fill: am5.color(0xff8c00), tooltipText: "{title}" });
+        return am5.Bullet.new(root, { sprite: circle });
+      });
+
+      // Cities data (your existing long list)
+      var cities = [
+        { title: "Dubai", latitude: 25.276987, longitude: 55.296249 },
+        { title: "Riyadh", latitude: 24.6748, longitude: 46.6977 },
+        { title: "New York", latitude: 40.7128, longitude: -74.006 },
+        { title: "London", latitude: 51.5074, longitude: -0.1278 },
+        { title: "Paris", latitude: 48.8566, longitude: 2.3522 },
+        { title: "Mumbai", latitude: 19.076, longitude: 72.8777 },
+        { title: "Nairobi", latitude: -1.2921, longitude: 36.8219 }
+      ];
+
+      cities.forEach(function(city) {
+        pointSeries.data.push({
+          geometry: { type: "Point", coordinates: [city.longitude, city.latitude] },
+          title: city.title
+        });
+      });
+
+      chart.appear(1000, 100);
+
+      // Fit the map to show all countries initially
+      setTimeout(function() {
+        chart.zoomToGeoBounds(polygonSeries.getGeoBounds());
+      }, 50);
+
+    });
+</script>-->
+
+    <!-- Page Header Start !-->
+    <div class="page-breadcrumb-area">
+        <div class="page-overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div
+                        class="te-breadcrumb-wrapper wow animate__animated animate__slideInDown animate__slow"
+                    >
+                        <div class="te-page-heading">
+                            <h3 class="te-page-title">Global Presence</h3>
+                        </div>
+                        <div class="te-breadcrumb-list">
+                            <ul>
+                                <li><a href={`${base}/`}>Home</a></li>
+                                <li class="active">Global Presence</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End !-->
+
+    <section class="global-presence-section">
+        <div class="container">
+            <h3 class="wow animate__animated animate__fadeInUp animate__faster">
+                Our Global Presence
+            </h3>
+            <p class="wow animate__animated animate__fadeInUp animate__fast">
+                We have successfully established a strong distribution and
+                trading network across:
+            </p>
+            <ul class="wow animate__animated animate__fadeInUp animate__slow">
+                <li>GCC & Middle East</li>
+                <li>Africa</li>
+                <li>South Asia</li>
+                <li>Europe</li>
+                <li>United States</li>
+            </ul>
+            <p class="wow animate__animated animate__fadeInUp animate__slower">
+                Our multicultural reach allows us to serve a diverse range of
+                industries and companies worldwide.
+            </p>
+
+            <!-- Map -->
+            <div id="chartdiv"><img src={`${base}/images/map.png`} /></div>
+        </div>
+    </section>
+</Layout>

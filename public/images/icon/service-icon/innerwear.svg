@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 64 64"
+     width="128"
+     height="128"
+     fill="none"
+     stroke="#7b68ee"
+     stroke-width="1"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+    <!-- T-shirt / Innerwear -->
+    <path d="M16 16 L24 8 H40 L48 16 V44 H16 Z"/>
+
+    <!-- Branded tag -->
+    <path d="M40 16 L48 8 56 16 48 24 Z"/>
+
+    <!-- Optional hanger -->
+    <line x1="24" y1="8" x2="24" y2="6"/>
+    <line x1="40" y1="8" x2="40" y2="6"/>
+</svg>

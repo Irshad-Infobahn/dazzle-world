@@ -1,0 +1,78 @@
+---
+// src/layouts/InnerLayout.astro
+// Use this layout for every page that is NOT the homepage.
+// It adds the breadcrumb / page-hero section automatically.
+//
+// Usage:
+//   ---
+//   import InnerLayout from '../layouts/InnerLayout.astro';
+//   ---
+//   <InnerLayout title="Company Profile" breadcrumb="About Us / Company Profile">
+//     <!-- page content here -->
+//   </InnerLayout>
+
+import Layout from "./Layout.astro";
+
+interface Props {
+    title: string;
+    description?: string;
+    /** Text shown in the breadcrumb bar, e.g. "About Us / Company Profile" */
+    breadcrumb?: string;
+    /** Background image for the page hero (optional — falls back to CSS default) */
+    heroImage?: string;
+}
+
+const { title, description, breadcrumb = title, heroImage } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<Layout
+    title={`${title} – Dazzle World General Trading LLC`}
+    description={description}
+>
+    <!-- Page Hero / Breadcrumb -->
+    <div
+        class="te-breadcrumb-area"
+        style={heroImage
+            ? `background-image: url('${base}/${heroImage}');`
+            : ""}
+    >
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="te-breadcrumb-content">
+                        <h1 class="te-breadcrumb-title">{title}</h1>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href={`${base}/`}>Home</a>
+                                </li>
+                                {
+                                    breadcrumb
+                                        .split("/")
+                                        .map((crumb, i, arr) =>
+                                            i < arr.length - 1 ? (
+                                                <li class="breadcrumb-item">
+                                                    {crumb.trim()}
+                                                </li>
+                                            ) : (
+                                                <li
+                                                    class="breadcrumb-item active"
+                                                    aria-current="page"
+                                                >
+                                                    {crumb.trim()}
+                                                </li>
+                                            ),
+                                        )
+                                }
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Body -->
+    <slot />
+</Layout>
