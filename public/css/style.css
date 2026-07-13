@@ -4979,7 +4979,7 @@ body.admin-bar .te-header-menu-area.te-sticky_menu {
     }
 }
 
-.latest-service-card .btn-wrapper {
+/* .latest-service-card .btn-wrapper {
     width: 190px;
     -ms-flex-negative: 0;
     flex-shrink: 0;
@@ -4999,6 +4999,23 @@ body.admin-bar .te-header-menu-area.te-sticky_menu {
 
 .latest-service-card .btn-wrapper svg {
     transition: transform 0.3s ease;
+} */
+ .latest-service-card .btn-wrapper {
+    width: 190px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column; /* Stack text and SVG vertically */
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Space between text and arrow */
+    align-self: stretch;
+    background-color: rgb(0 0 0 / 5%);
+    text-decoration: none;
+}
+
+.latest-service-card .btn-wrapper svg {
+    transition: transform 0.3s ease;
+    transform: rotate(90deg); /* Makes the right arrow point down */
 }
 
 /* when card OR title is hovered */
@@ -11054,8 +11071,8 @@ ul.children {
     justify-content: flex-end;
     -webkit-transform: scale(0.75);
     transform: scale(0.75);
-    opacity: 0;
-    visibility: hidden;
+    /* opacity: 0; */opacity: 1;
+    /* visibility: hidden; */visibility: visible;
     -webkit-transition: all 0.5s ease-out;
     transition: all 0.5s ease-out;
 }
