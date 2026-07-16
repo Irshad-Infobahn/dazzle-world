@@ -11069,8 +11069,8 @@ ul.children {
     -webkit-box-pack: end;
     -ms-flex-pack: end;
     justify-content: flex-end;
-    -webkit-transform: scale(0.75);
-    transform: scale(0.75);
+    /* -webkit-transform: scale(0.75); */-webkit-transform: scale(0.85);
+    /* transform: scale(0.75); */transform: scale(0.85);
     /* opacity: 0; */opacity: 1;
     /* visibility: hidden; */visibility: visible;
     -webkit-transition: all 0.5s ease-out;
