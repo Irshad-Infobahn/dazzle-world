@@ -23,7 +23,11 @@ export default defineConfig({
     //base: '/dazzle/',
 
     site: 'https://www.dazzle-world.com',
-    base: '/',
+
+    // GitHub Pages serves this repo from /dazzle-world/, while the real
+    // domain and local dev serve it from root — so only the GH Pages
+    // workflow build (GITHUB_PAGES=true) uses the subpath base.
+    base: process.env.GITHUB_PAGES === 'true' ? '/dazzle-world/' : '/',
 
     // --- BUILD OUTPUT ---
     // All built files go into /dist — copy this folder to any web server.
