@@ -22,8 +22,8 @@ export default defineConfig({
     //base: '/',
     //base: '/dazzle/',
 
-    site: 'https://irshad-infobahn.github.io',
-    base: '/dazzle-world/',
+    site: 'https://www.dazzle-world.com',
+    base: '/',
 
     // --- BUILD OUTPUT ---
     // All built files go into /dist — copy this folder to any web server.
