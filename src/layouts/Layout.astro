@@ -71,14 +71,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // strip trailing slas
 
     <body>
         <!-- Preloader -->
-        <div id="preloader">
+        <!-- <div id="preloader">
             <div id="preloader-status">
                 <div class="preloader-ripple">
                     <div></div>
                     <div></div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Preloader End !-->
 
         <!-- WhatsApp Floating Button -->
@@ -88,7 +88,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // strip trailing slas
             aria-label="Chat on WhatsApp"
         >
             <div class="whatsapplogo">
-                <img src={`${base}/images/whatsapp.png`} alt="WhatsApp" />
+                <img loading="lazy" src={`${base}/images/whatsapp.png`} alt="WhatsApp" />
             </div>
         </a>
 
@@ -268,7 +268,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // strip trailing slas
                                 <div class="te-footer-widget-info">
                                     <div class="te-footer-logo">
                                         <a href={`${base}/`}>
-                                            <img
+                                            <img loading="lazy"
                                                 src={`${base}/images/logo/logo-white.png`}
                                                 alt="Footer Logo"
                                             />
@@ -520,7 +520,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // strip trailing slas
                 <div class="te-menu-sidebar-content">
                     <div class="te-menu-sidebar-logo">
                         <a href={`${base}/`}>
-                            <img
+                            <img loading="lazy"
                                 src={`${base}/images/logo/logo-white.png`}
                                 alt="logo"
                             />

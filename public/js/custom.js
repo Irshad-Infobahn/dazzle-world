@@ -559,10 +559,10 @@
             /*
         Preeloader
         ============================*/
-        $(window).on("load", function () {
-            $("#preloader").fadeOut();
-            $("#preloader-status").delay(200).fadeOut("slow");
-            $("body").delay(200).css({"overflow-x": "hidden"});
-        });
+        // $(window).on("load", function () {
+        //     $("#preloader").fadeOut();
+        //     $("#preloader-status").delay(200).fadeOut("slow");
+        //     $("body").delay(200).css({"overflow-x": "hidden"});
+        // });
         
 })(jQuery);

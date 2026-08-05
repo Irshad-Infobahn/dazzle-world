@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <system.web>
+    <compilation tempDirectory="G:\PleskVhosts\flystaysave.com\tmp" />
+  </system.web>
+
+  <system.webServer>
+    <rewrite>
+      <rules>
+
+        <!-- Force HTTPS -->
+        <rule name="Force HTTPS" stopProcessing="true">
+          <match url="(.*)" />
+          <conditions>
+            <add input="{HTTPS}" pattern="off" ignoreCase="true" />
+          </conditions>
+          <action type="Redirect"
+                  url="https://www.dazzle-world.com/{R:1}"
+                  redirectType="Permanent" />
+        </rule>
+
+        <!-- aboutus.aspx -->
+        <rule name="About Us Redirect" stopProcessing="true">
+          <match url="^aboutus\.aspx$" ignoreCase="true" />
+          <action type="Redirect"
+                  url="https://www.dazzle-world.com/company-profile/"
+                  redirectType="Permanent" />
+        </rule>
+
+        <!-- enquiry.aspx -->
+        <rule name="Enquiry Redirect" stopProcessing="true">
+          <match url="^enquiry\.aspx$" ignoreCase="true" />
+          <action type="Redirect"
+                  url="https://www.dazzle-world.com/polymer-and-resin-division/"
+                  redirectType="Permanent" />
+        </rule>
+
+        <!-- contactus.aspx -->
+        <rule name="Contact Redirect" stopProcessing="true">
+          <match url="^contactus\.aspx$" ignoreCase="true" />
+          <action type="Redirect"
+                  url="https://www.dazzle-world.com/contact-us/"
+                  redirectType="Permanent" />
+        </rule>
+
+        <!-- Career.aspx -->
+        <rule name="Career Redirect" stopProcessing="true">
+          <match url="^Career\.aspx$" ignoreCase="true" />
+          <action type="Redirect"
+                  url="https://www.dazzle-world.com/"
+                  redirectType="Permanent" />
+        </rule>
+
+      </rules>
+    </rewrite>
+  </system.webServer>
+</configuration>
